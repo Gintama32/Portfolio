@@ -1,0 +1,877 @@
+/* Global styles to prevent unwanted scrolling */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+/* Fullscreen video background - stays behind everything */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;   /* behind everything */
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: -1;   /* above video but below content */
+}
+
+/* Horizontal sliding container */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 400vw;  /* 4 sections */
+    transition: transform 0.8s ease;
+    overflow: hidden; /* Hide horizontal overflow */
+}
+
+/* Each section/page */
+.page {
+    min-width: 100vw;
+    height: 100vh; /* Fixed height for non-project sections */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content vertically */
+    position: relative;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-y: hidden; /* Disable vertical scrolling by default */
+}
+
+/* Special styling for projects page to allow scrolling */
+#projects {
+    align-items: flex-start; /* Align to top for scrollable content */
+    overflow-y: auto; /* Enable vertical scrolling only for projects */
+    padding-top: 40px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Home Section Styles */
+.home-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+    position: relative;
+    z-index: 1; /* ensures content is above overlay and video */
+}
+
+.home-text-container {
+    text-align: left;
+    max-width: 800px;
+    animation: fadeIn 1s ease-out;
+}
+
+.greeting {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.name {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    background: linear-gradient(45deg, #f3ec78, #af4261);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+    letter-spacing: -1px;
+}
+
+.title-container {
+    margin-bottom: 25px;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+}
+
+.highlight {
+    position: relative;
+    display: inline-block;
+    color: #f3ec78;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    bottom: 5px;
+    left: 0;
+    background-color: rgba(175, 66, 97, 0.3);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+/* Blinking cursor effect */
+.highlight::before {
+    content: '|';
+    position: absolute;
+    right: -12px;
+    color: #f3ec78;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.home-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.resume-btn, .projects-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.resume-btn {
+    background: linear-gradient(45deg, #f3ec78, #af4261);
+    border: none;
+    box-shadow: 0 4px 15px rgba(175, 66, 97, 0.4);
+}
+
+.projects-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.resume-btn:hover, .projects-btn:hover {
+    transform: translateY(-3px);
+}
+
+.resume-btn:hover {
+    box-shadow: 0 7px 20px rgba(175, 66, 97, 0.5);
+}
+
+.projects-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.home-social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.home-social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home-social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    color: #f3ec78;
+}
+
+.nav-indicator {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-indicator p {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.arrow-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.arrow-container i {
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+}
+
+.arrow-container i:first-child {
+    animation-delay: 0s;
+}
+
+.arrow-container i:last-child {
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+}
+
+/* Navigation Controls */
+.navigation-controls {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-dots {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.nav-dot.active {
+    background: linear-gradient(45deg, #f3ec78, #af4261);
+    transform: scale(1.2);
+}
+
+.nav-dot.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(243, 236, 120, 0.3);
+    animation: ripple 1.5s infinite;
+    z-index: -1;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+/* About Section */
+.about-container {
+    display: flex;
+    flex-direction: row;  /* side by side text + image */
+    justify-content: center;
+    align-items: center;
+    gap: 60px;            /* space between text and image */
+    max-width: 1000px;
+    padding: 0 40px;
+    margin: auto;
+    text-align: left;
+    z-index: 1;
+    animation: fadeIn 1s ease-in-out;
+    height: 100%; /* Use full height of the container */
+}
+
+.about-text {
+    flex: 2;   /* text takes more space */
+    color: white;
+}
+
+.about-text h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin-bottom: 15px;
+}
+
+.about-image {
+    flex: 1;   /* image takes less space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Project Section Styles */
+.projects-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;  /* Space between project containers */
+    padding: 40px 20px;  /* Reduced top padding */
+    width: 100%;
+    max-width: 1400px;  /* Slightly wider than individual containers */
+    margin: 0 auto;
+    overflow-y: visible; /* Remove internal scrolling */
+    height: auto; /* Allow natural height */
+}
+
+/* Projects section scrollbar styling */
+#projects::-webkit-scrollbar {
+    width: 8px;
+}
+
+#projects::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#projects::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+#projects::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+.project-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 1300px;  /* increased from 1200px to accommodate larger demos */
+    padding: 40px;
+    margin: auto;
+    text-align: left;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1);  /* semi-transparent background */
+    backdrop-filter: blur(10px);  /* glass effect */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.project-text {
+    flex: 1;  /* equal space distribution */
+    color: white;
+    padding: 20px;
+}
+
+.project-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.project-text p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.project-demo {
+    flex: 1.2;  /* slightly more space for the demo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 400px; /* Ensure enough vertical space */
+}
+
+.project-demo video, .project-demo img {
+    width: 100%;
+    max-width: 600px; /* Increased from 500px */
+    height: 350px; /* Added fixed height */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    object-fit: contain; /* Ensures content maintains aspect ratio */
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tech-tag {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Contact Section Styles */
+.contact-container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+}
+
+.contact-container h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #f3ec78, #af4261);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.contact-intro {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: left;
+    max-width: 400px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon {
+    font-size: 24px;
+    color: #f3ec78;
+    background: rgba(255, 255, 255, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-text h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3em;
+}
+
+.contact-text p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-text a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-text a:hover {
+    color: #f3ec78;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    color: #f3ec78;
+}
+
+.contact-form-container {
+    flex: 1;
+    max-width: 500px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.form-group {
+    position: relative;
+    width: 100%; /* Ensure form group takes full width */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in the element's width */
+    margin: 0; /* Remove any default margins */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: rgba(243, 236, 120, 0.5);
+    box-shadow: 0 0 10px rgba(243, 236, 120, 0.3);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.submit-btn {
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #f3ec78, #af4261);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-end;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.success-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.success-message i {
+    font-size: 60px;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.success-message p {
+    font-size: 1.2em;
+    color: white;
+}
+
+/* Responsive for smaller screens */
+@media screen and (max-width: 900px) {
+    /* Home section responsive */
+    .home-text-container {
+        text-align: center;
+        padding: 0 20px;
+    }
+    
+    .name {
+        font-size: 3.5rem;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .description {
+        font-size: 1.1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .home-buttons {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .home-social-links {
+        justify-content: center;
+    }
+    
+    .nav-indicator {
+        bottom: 20px;
+    }
+    
+    .navigation-controls {
+        padding: 10px 20px;
+        gap: 15px;
+    }
+    
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .nav-dot {
+        width: 10px;
+        height: 10px;
+    }
+    .project-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    .project-text {
+        text-align: center;
+    }
+
+    .project-text h2 {
+        font-size: 2em;
+    }
+
+    .project-demo video, .project-demo img {
+        max-width: 100%;
+        height: 300px; /* Slightly smaller height on mobile but still substantial */
+    }
+
+    .tech-stack {
+        justify-content: center;
+    }
+
+    .project-links {
+        justify-content: center;
+    }
+    .about-container {
+        flex-direction: column;  /* stack text + image */
+        text-align: center;
+    }
+    
+    .about-text h2 {
+        font-size: 2.5em;
+    }
+
+    .about-text p {
+        font-size: 1.1em;
+    }
+
+    .about-image img {
+        width: 200px;
+        height: 200px;
+    }
+    
+    /* Contact section responsive */
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .contact-info {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .contact-form-container {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .submit-btn {
+        width: 100%;
+    }
+    
+    .contact-container h2 {
+        font-size: 2.5em;
+    }
+}

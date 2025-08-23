@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furba Lama Sherpa | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+ <!-- Fixed Video Background -->
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="bg.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<!-- Horizontal Sliding Sections -->
+<div class="container">
+    <section class="page" id="home">
+        <div class="home-content">
+            <div class="home-text-container">
+                <p class="greeting">Hello, I'm</p>
+                <h1 class="name">Furba Lama Sherpa</h1>
+                <div class="title-container">
+                    <p class="title">I build <span class="highlight">scalable</span> software solutions</p>
+                </div>
+                <p class="description">Software Engineer specializing in developing efficient, robust applications across multiple platforms and technologies.</p>
+                <div class="home-buttons">
+                    <a href="Res2.pdf" class="resume-btn" target="_blank">
+                        <i class="fas fa-file-alt"></i> Resume
+                    </a>
+                    <a href="javascript:void(0);" class="projects-btn" onclick="scrollPage(2)">
+                        <i class="fas fa-code"></i> View My Work
+                    </a>
+                </div>
+                <div class="home-social-links">
+                    <a href="https://github.com/Gintama32" target="_blank" class="home-social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/furba-sherpa-555785208/" target="_blank" class="home-social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="page" id="about">
+        <div class="about-container">
+          <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+              Hi, I'm Furba Lama Sherpa. I'm a graduated computer science student and a software engineer who loves building efficient systems that solve complex problems.
+            </p>
+            <p>
+              I enjoy developing software across the stack, from backend systems to frontend interfaces. I work with technologies like Java, Python, C++, and various frameworks to create scalable, maintainable solutions. I'm passionate about algorithm optimization, system design, and writing clean, efficient code.
+            </p>
+            <p>
+              Outside of engineering, I enjoy exploring emerging technologies, contributing to open-source projects, and finding innovative ways to improve software quality and performance.
+            </p>
+          </div>
+          <div class="about-image">
+            <img src="profile.jpg" alt="Furba Lama Sherpa">
+          </div>
+        </div>
+      </section>
+      
+
+    <section class="page" id="projects">
+        <div class="projects-wrapper">
+            <div class="project-container">
+                <div class="project-text">
+                    <h2>AI-Powered Image Analysis Web App</h2>
+                    <p>A full-stack application that uses Clarifai’s General Image Concept Model to generate detailed, multi-word tags (e.g., “red sports car,” “sunset beach”) from user-uploaded images. This allows users to extract meaningful insights and descriptions from visual content.</p>
+                    <p>Built with Express.js, PostgreSQL, and React, the app integrates Clarifai’s gRPC API to cut image processing latency by 50%. Users can visualize analysis results in under 2 seconds, making the experience both fast and interactive.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Clarifai gRPC API</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Gintama32/ConceptFinder" class="project-link" target="_blank">View Code</a>
+                        <a href="https://zippy-kleicha-99f2cc.netlify.app/" class="project-link" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+                <div class="project-demo">
+                    <img src="project_demo.gif" alt="Project Demo">
+                </div>
+            </div>
+
+            <div class="project-container">
+                <div class="project-text">
+                    <h2>Anonymous Next.Js Messaging Web App</h2>
+                        <p>A secure, full-stack application that allows users to send messages anonymously to other users with receiving user's unique link. Built with Next.js for server-side rendering and dynamic site generation, the app delivers fast performance while maintaining a responsive, accessible UI across devices.</p>
+                        <p>The platform integrates NextAuth for authentication, MongoDB with Mongoose for secure data storage, and OpenAI for auto-generating messages, enhancing user engagement. TypeScript, React Hooks, Tailwind CSS, shadcn/ui, and Zod ensure maintainable, type-safe code and robust input validation.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">NextAuth</span>
+                        <span class="tech-tag">MongoDB/Mongoose</span>
+                        <span class="tech-tag">Zod</span>
+                        <span class="tech-tag">OpenAI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Gintama32/New_project" class="project-link" target="_blank">View Code</a>
+                        <a href="https://new-project-neon-psi.vercel.app/" class="project-link" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+                <div class="project-demo">
+                    <video autoplay loop muted playsinline>
+                        <source src="project_demo1.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page" id="contact">
+        <div class="contact-container">
+            <h2>Get In Touch</h2>
+            <p class="contact-intro">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p><a href="mailto:fluffey6@gmail.com">fluffey6@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>Seattle, WA</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/Gintama32" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/furba-sherpa-555785208/" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xqadzzqy" method="POST">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <!-- Anti-spam honeypot field -->
+                        <div class="form-group" style="display:none">
+                            <input type="text" name="_gotcha">
+                        </div>
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Navigation Buttons -->
+<div class="navigation-controls">
+    <button class="nav-btn prev" onclick="scrollPage(-1)" aria-label="Previous section">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+    <div class="nav-dots">
+        <span class="nav-dot active" data-index="0" onclick="goToPage(0)"></span>
+        <span class="nav-dot" data-index="1" onclick="goToPage(1)"></span>
+        <span class="nav-dot" data-index="2" onclick="goToPage(2)"></span>
+        <span class="nav-dot" data-index="3" onclick="goToPage(3)"></span>
+    </div>
+    <button class="nav-btn next" onclick="scrollPage(1)" aria-label="Next section">
+        <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<script src="https://formspree.io/js/formspree-v2.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
